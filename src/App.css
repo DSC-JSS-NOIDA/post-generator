@@ -1,12 +1,37 @@
-.navbar-dark{
+body {
+  background-color: #e4e4e4f1 !important;
+}
+
+.navbar-dark {
   position: fixed;
   top: 0;
   width: 100%;
-  margin:0 !important;
+  margin: 0 !important;
   padding: 0 !important;
   height: 100px;
-  background-color:#343a40!important;;
+  background-color: #343a40 !important;
 }
-h1,h2,h3,h4,h5,h6{
-  color: white;
+
+.control-panel {
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  width: 33%;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+  color: #676683;
+  background-color: white;
+  padding: 30px;
+}
+.main-content{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.preview{
+  width: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  margin:2%
 }
