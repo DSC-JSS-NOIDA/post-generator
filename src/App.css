@@ -33,5 +33,26 @@ body {
 .preview{
   width: 50%;
   border: 1px solid rgba(0, 0, 0, 0.125);
-  margin:2%
+  margin:2%;
+}
+input[type=file]{
+  margin-top: 50px;
+  margin-bottom: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.225);
+  padding: 5px;
+}
+input[type=number],input[type=text]{
+  border-radius: 3px;
+  margin: 10px;
+  text-align-last: center;
+  outline: none;
+  padding: 5px;
+}
+input[type=button]{
+  background-color: #17a2b8;
+  color: white;
+  outline: none;
+  border: none;
+  padding: 8px;
+  border-radius: 5px;
 }

@@ -1,15 +1,15 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
 
 export class Preview extends Component {
+  render() {
+    const { data } = this.props;
     
-    render() {
-        const {data} = this.props;
-        return (
-            <div className="preview">
-                <img id="preview-image" width="100%" src={data.image} alt="Random" />
-            </div>
-        )
-    }
+    return (
+      <div className="preview">
+        <img id="preview-image" width={data.width ? data.width : '100%'} height={data.height ? data.height : '500px'} src={data.image} alt="Random" />
+      </div>
+    );
+  }
 }
 
-export default Preview
+export default Preview;
