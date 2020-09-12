@@ -8,7 +8,7 @@ import Footer from "./components/Footer";
 export class App extends Component {
   render() {
     return (
-      <div style={{ position: "relative" }}>
+      <div >
         <Header />
         <Control />
         <Footer />
