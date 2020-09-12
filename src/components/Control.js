@@ -16,6 +16,7 @@ export class Control extends Component {
         <input
           type="text"
           name="0"
+          key="0"
           onChange={(e) => this.changeVal(e)}
           placeholder="Enter Details"
         />,
@@ -62,6 +63,7 @@ export class Control extends Component {
       ...this.state.detailsFields,
       <input
         type="text"
+        key={newKey}
         name={newKey}
         onChange={(e) => this.changeVal(e)}
         placeholder="Enter Details"

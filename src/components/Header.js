@@ -1,5 +1,5 @@
 import React from "react";
-import { Navbar, NavbarBrand } from "reactstrap";
+import { Navbar } from "reactstrap";
 import logo from "../assets/images/logo.svg";
 export default function Header() {
   return (
@@ -14,6 +14,7 @@ export default function Header() {
         <a
           href="https://github.com/dsc-jss-noida"
           className="text-decoration-none text-white github-icon"
+          rel="noopener noreferrer"
           target="_blank"
         >
           <i className="fa fa-github fa-3x mr-3"></i>

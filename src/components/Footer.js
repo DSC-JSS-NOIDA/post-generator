@@ -7,6 +7,7 @@ const Footer = () => {
       <a
         href="https://github.com/dsc-jss-noida"
         className=" text-black github-footer"
+        rel="noopener noreferrer"
         target="_blank"
       >
         <i className="fa fa-github-square fa-2x"></i>
