@@ -25,34 +25,94 @@ body {
   background-color: white;
   padding: 30px;
 }
-.main-content{
+.main-content {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-.preview{
-  width: 50%;
+.preview {
+  /* width: 50%; */
   border: 1px solid rgba(0, 0, 0, 0.125);
-  margin:2%;
+  margin: 2%;
+  position: relative;
 }
-input[type=file]{
+input[type="file"] {
   margin-top: 50px;
   margin-bottom: 10px;
   border: 1px solid rgba(0, 0, 0, 0.225);
   padding: 5px;
+  width: 100%;
 }
-input[type=number],input[type=text]{
+input[type="number"],
+input[type="text"] {
   border-radius: 3px;
   margin: 10px;
+  width: 80%;
   text-align-last: center;
   outline: none;
   padding: 5px;
 }
-input[type=button]{
+input[type="button"] {
   background-color: #17a2b8;
   color: white;
   outline: none;
   border: none;
   padding: 8px;
   border-radius: 5px;
+  margin-top: 15px;
+}
+.download {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.download select {
+  width: 60%;
+  padding: 10px;
+  height: 40px;
+}
+.imageAndDownload {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* height: 40px; */
+  text-align: center;
+  /* background-color: #fff; */
+  padding: 10px;
+  font-size: 24px;
+  top: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid #cccccc;
+}
+.github-footer {
+  display: none;
+}
+@media (max-width: 568px) {
+  .main-content {
+    flex-direction: column;
+    justify-content: center;
+  }
+  .control-panel {
+    width: 60%;
+  }
+}
+@media (max-width: 500px) {
+  .github-icon {
+    display: none;
+  }
+  .github-footer {
+    display: block;
+    background-color: inherit;
+  }
 }

@@ -13,7 +13,7 @@ export default function Header() {
 
         <a
           href="https://github.com/dsc-jss-noida"
-          className="text-decoration-none text-white"
+          className="text-decoration-none text-white github-icon"
           target="_blank"
         >
           <i className="fa fa-github fa-3x mr-3"></i>
