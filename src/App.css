@@ -87,7 +87,8 @@ footer {
   text-align: center;
   /* background-color: #fff; */
   padding: 10px;
-  font-size: 24px;
+  font-size: 18px;
+  margin-top: 20px;
   top: 100%;
   display: flex;
   flex-direction: column;
