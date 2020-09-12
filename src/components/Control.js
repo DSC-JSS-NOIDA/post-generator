@@ -12,6 +12,7 @@ export class Control extends Component {
       image: sample,
       width: "100%",
       height: "500px",
+      downloadAs:'PNG',
       detailsFields: [
         <input
           type="text"
