@@ -2,6 +2,13 @@ body {
   background-color: #e4e4e4f1 !important;
 }
 
+/* Font face rule */
+@font-face {
+  font-family: 'Google Sans';
+  src: url('./assets/GoogleSans-22Jan2018-v1_27/GoogleSans-Regular-v1.27.ttf');
+}
+
+
 .navbar-dark {
   position: fixed;
   top: 0;
@@ -33,7 +40,6 @@ body {
   justify-content: space-between;
 }
 .preview {
-  /* width: 50%; */
   border: 1px solid rgba(0, 0, 0, 0.125);
   margin: 2%;
   position: relative;
@@ -58,6 +64,7 @@ input[type="button"] {
   background-color: #17a2b8;
   color: white;
   outline: none;
+  margin-bottom: 10px;
   border: none;
   padding: 8px;
   border-radius: 5px;
@@ -85,9 +92,7 @@ footer {
   position: relative;
   bottom: 0;
   width: 100%;
-  /* height: 40px; */
   text-align: center;
-  /* background-color: #fff; */
   padding: 10px;
   font-size: 18px;
   margin-top: 20px;

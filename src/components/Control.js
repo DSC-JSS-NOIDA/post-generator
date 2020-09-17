@@ -12,18 +12,49 @@ export class Control extends Component {
       image: sample,
       width: "100%",
       height: "500px",
-      downloadAs:'PNG',
-      detailsFields: [
-        <input
-          type="text"
-          name="0"
-          key="0"
-          onChange={(e) => this.changeVal(e)}
-          placeholder="Enter Details"
-        />,
+      downloadAs: "PNG",
+      fieldValues: [
+        {
+          key: 0,
+          detail: (
+            <input
+              type="text"
+              name="0"
+              onChange={(e) => this.changeVal(e)}
+              placeholder="Enter details"
+            />
+          ),
+          font: (
+            <input
+              type="number"
+              name="0"
+              onChange={(e) => this.changeFontSize(e)}
+              placeholder="Font size (in px)"
+            />
+          ),
+          color: (
+            <input
+              type="color"
+              name="0"
+              onChange={(e) => this.changeColor(e)}
+            />
+          ),
+          bold: (
+            <input
+              type="button"
+              name="0"
+              id="false"
+              value="B"
+              onClick={(e) => this.toggleBold(e)}
+            />
+          ),
+        },
       ],
       keyNum: 0,
       details: [],
+      colorVal: [],
+      fontSize: [],
+      isBold: [],
       toBeDownloaded: <Preview data={this.state} />,
     };
   }
@@ -43,6 +74,7 @@ export class Control extends Component {
     });
   };
   changeVal(e) {
+    // For Details
     this.setState(
       Object.defineProperty({}, `detail_${e.target.name}`, {
         value: e.target.value,
@@ -55,23 +87,96 @@ export class Control extends Component {
     this.setState({
       details: details,
     });
-    console.log(this.state);
   }
+  changeColor = (e) => {
+    // For Color
+    this.setState(
+      Object.defineProperty({}, `color_${e.target.name}`, {
+        value: e.target.value,
+        enumerable: true,
+      })
+    );
+    let color = this.state.colorVal;
+    color[parseInt(e.target.name)] = e.target.value;
+
+    this.setState({
+      colorVal: color,
+    });
+  };
+
+  changeFontSize = (e) => {
+    // For Font size
+    this.setState(
+      Object.defineProperty({}, `font_${e.target.name}`, {
+        value: e.target.value,
+        enumerable: true,
+      })
+    );
+    let font = this.state.fontSize;
+    font[parseInt(e.target.name)] = e.target.value;
+
+    this.setState({
+      fontSize: font,
+    });
+  };
+
+  toggleBold = (e) => {
+    let isBold = this.state.isBold;
+
+    if (e.target.id === "false") {
+      e.target.id = "true";
+      isBold[parseInt(e.target.name)] = "true";
+      this.setState({ isBold: isBold });
+    } else if (e.target.id === "true") {
+      e.target.id = "false";
+      isBold[parseInt(e.target.name)] = "false";
+      this.setState({ isBold: isBold });
+    }
+  };
 
   addMoreFields = () => {
     let newKey = parseInt(this.state.keyNum) + 1;
-    let newArr = [
-      ...this.state.detailsFields,
-      <input
-        type="text"
-        key={newKey}
-        name={newKey}
-        onChange={(e) => this.changeVal(e)}
-        placeholder="Enter Details"
-      />,
-    ];
+    let newObj = {
+      key: newKey,
+      detail: (
+        <input
+          type="text"
+          name={newKey}
+          onChange={(e) => this.changeVal(e)}
+          placeholder="Enter details"
+        />
+      ),
+      font: (
+        <input
+          type="number"
+          name={newKey}
+          onChange={(e) => this.changeFontSize(e)}
+          placeholder="Font size (in px)"
+        />
+      ),
+      color: (
+        <input
+          type="color"
+          name={newKey}
+          onChange={(e) => this.changeColor(e)}
+        />
+      ),
+      bold: (
+        <input
+          type="button"
+          name={newKey}
+          value="B"
+          id="false"
+          onClick={(e) => this.toggleBold(e)}
+        />
+      ),
+    };
+
+    let newArr = [...this.state.fieldValues, newObj];
+
     this.setState({
       detailsFields: newArr,
+      fieldValues: newArr,
       keyNum: newKey,
     });
   };
@@ -92,8 +197,16 @@ export class Control extends Component {
             placeholder="Enter Height"
             onChange={(e) => this.changeHeight(e)}
           />
-          {this.state.detailsFields}
-
+          {this.state.fieldValues.map((element) => {
+            return (
+              <>
+                {element.detail}
+                {element.font}
+                {element.bold}
+                {element.color}
+              </>
+            );
+          })}
           <input
             type="button"
             value="Add More Fields"

@@ -5,15 +5,30 @@ export class Preview extends Component {
   render() {
     const { data } = this.props;
 
-    let detailsToBeRendered = data.details
-      .filter((element) => element.length > 0)
-      .map((detail) => {
-        return (
-          <Draggable bounds="parent">
-            <div style={{ position: "absolute", top: 0 }}>{detail}</div>
-          </Draggable>
-        );
-      });
+    let detailsToBeRendered = data.details.map((detail, ind) => {
+      // For Bold option
+      let fW = "normal";
+      if (data.isBold[ind] === "true") {
+        fW = "bold";
+      }
+
+      return (
+        <Draggable bounds="parent" key={ind}>
+          <div
+            style={{
+              position: "absolute",
+              top: 0,
+              fontFamily:'Google Sans',
+              color: data.colorVal[ind],
+              fontSize: `${data.fontSize[ind]}px`,
+              fontWeight: fW,
+            }}
+          >
+            {detail}
+          </div>
+        </Draggable>
+      );
+    });
     return (
       <div className="preview">
         {detailsToBeRendered}

@@ -1,13 +1,12 @@
 import React from "react";
 import { Navbar } from "reactstrap";
-import logo from "../assets/images/logo.svg";
+
 export default function Header() {
   return (
     <Navbar dark expand="md">
       <div className="container">
         <div className="d-flex align-items-center">
-          <img src={logo} width="65" alt="" />
-          &nbsp;
+          &nbsp;&nbsp;&nbsp;
           <h3 className="text-white">Post Generator</h3>
         </div>
 
