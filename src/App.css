@@ -36,17 +36,13 @@ body {
 .main-content {
   margin-top: 130px;
   display: flex;
-  /* align-items: center; */
+  align-items: center;
   justify-content: space-between;
 }
 .preview {
   border: 1px solid rgba(0, 0, 0, 0.125);
   margin: 2%;
-  height:100%;
   position: relative;
-}
-.preview img{
-  padding: 0px;
 }
 input[type="file"] {
   margin-top: 50px;
@@ -124,7 +120,7 @@ footer {
     justify-content: center;
   }
   .control-panel {
-    width: 60%;
+    width: 80%;
   }
 }
 @media (max-width: 500px) {
