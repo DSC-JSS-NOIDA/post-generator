@@ -2,6 +2,13 @@ import React, { Component } from "react";
 import { Preview } from "./Preview";
 import sample from "../assets/images/sample.jpg";
 import ExportAsImg from "./ExportAsImg";
+import i1 from "../assets/images/illustration/1.png";
+import i2 from "../assets/images/illustration/2.png";
+import i3 from "../assets/images/illustration/3.png";
+import i4 from "../assets/images/illustration/4.png";
+import i5 from "../assets/images/illustration/5.png";
+import i6 from "../assets/images/illustration/6.png";
+import i7 from "../assets/images/illustration/7.png";
 
 export class Control extends Component {
   constructor(props) {
@@ -55,6 +62,7 @@ export class Control extends Component {
       colorVal: [],
       fontSize: [],
       isBold: [],
+      imageIll:[],
       toBeDownloaded: <Preview data={this.state} />,
     };
   }
@@ -133,7 +141,17 @@ export class Control extends Component {
       this.setState({ isBold: isBold });
     }
   };
-
+  addIllust = (e) => {
+    let imgObj= {
+      count:parseInt(e.target.name)+1,
+      source:e.target.src
+    }
+    e.target.name = imgObj.count;
+    let newArr= this.state.imageIll;
+    newArr[parseInt(e.target.id)] = imgObj;
+    this.setState({imageIll:newArr})
+    console.log(this.state);
+  }
   addMoreFields = () => {
     let newKey = parseInt(this.state.keyNum) + 1;
     let newObj = {
@@ -181,6 +199,7 @@ export class Control extends Component {
     });
   };
   render() {
+    let illArray = [i1, i2, i3, i4, i5, i6, i7];
     return (
       <div className="main-content">
         <div className="control-panel">
@@ -212,6 +231,19 @@ export class Control extends Component {
             value="Add More Fields"
             onClick={() => this.addMoreFields()}
           />
+          <div className="illustration d-flex flex-wrap justify-content-center">
+            {illArray.map((image, ind) => (
+              <img
+                src={image}
+                name="0"
+                id={ind}
+                onClick={(e) => this.addIllust(e)}
+                width="100"
+                key={ind}
+                alt=""
+              />
+            ))}
+          </div>
           <div className="download">
             <h5>Download as: </h5>
             <select

@@ -22,7 +22,7 @@ body {
 
 .control-panel {
   border: 1px solid rgba(0, 0, 0, 0.125);
-  width: 33%;
+  width: 35%;
   border-radius: 8px;
   display: flex;
   flex-direction: column;
@@ -36,13 +36,17 @@ body {
 .main-content {
   margin-top: 130px;
   display: flex;
-  align-items: center;
+  /* align-items: center; */
   justify-content: space-between;
 }
 .preview {
   border: 1px solid rgba(0, 0, 0, 0.125);
   margin: 2%;
+  height:100%;
   position: relative;
+}
+.preview img{
+  padding: 0px;
 }
 input[type="file"] {
   margin-top: 50px;
@@ -69,6 +73,14 @@ input[type="button"] {
   padding: 8px;
   border-radius: 5px;
   margin-top: 15px;
+
+}
+.illustration img{
+  margin: 10px;
+  border:1px solid rgba(0, 0, 0, 0.125);
+  padding: 10px;
+  border-radius: 4px;
+  cursor: pointer;
 }
 .download {
   margin-top: 15px;
