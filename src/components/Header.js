@@ -4,7 +4,7 @@ import { Navbar } from "reactstrap";
 export default function Header() {
   return (
     <Navbar dark expand="md">
-      <div className="container">
+      <div className="container-fluid">
         <div className="d-flex align-items-center">
           &nbsp;&nbsp;&nbsp;
           <h3 className="text-white">Post Generator</h3>
