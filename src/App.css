@@ -119,6 +119,7 @@ footer {
   .main-content {
     flex-direction: column;
     justify-content: center;
+    align-items: center;
   }
   .control-panel {
     width: 80%;
