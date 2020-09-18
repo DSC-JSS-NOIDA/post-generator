@@ -152,6 +152,11 @@ export class Control extends Component {
     this.setState({imageIll:newArr})
     console.log(this.state);
   }
+  removeAll = () =>{
+    this.setState({
+      imageIll:[]
+    })
+  }
   addMoreFields = () => {
     let newKey = parseInt(this.state.keyNum) + 1;
     let newObj = {
@@ -244,6 +249,11 @@ export class Control extends Component {
               />
             ))}
           </div>
+          <input
+            type="button"
+            value="Remove Illustrations"
+            onClick={() => this.removeAll()}
+          />
           <div className="download">
             <h5>Download as: </h5>
             <select

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Draggable from "react-draggable";
-
+import {  ResizableBox } from "react-resizable";
 export class Preview extends Component {
   render() {
     const { data } = this.props;
@@ -18,7 +18,7 @@ export class Preview extends Component {
             style={{
               position: "absolute",
               top: 0,
-              cursor:'grab',
+              cursor: "grab",
               fontFamily: "Google Sans",
               color: data.colorVal[ind],
               fontSize: `${data.fontSize[ind]}px`,
@@ -30,21 +30,29 @@ export class Preview extends Component {
         </Draggable>
       );
     });
-    
+
     let illToBeRendered = data.imageIll.map((image) => {
       let illustration = [];
       for (let i = 0; i < image.count; i++) {
         illustration.push(
-          <Draggable bounds="parent">
-            <div
-              style={{
-                position: "absolute",
-                top: 0,
-                cursor:'grab',
-              }}
+          <Draggable bounds="parent" handle="img">
+            <ResizableBox
+              className="box"
+              width={100}
+              height={100}
+              minConstraints={[50, 50]}
+              style={{ position: "absolute", top: 0 }}
             >
-              <img src={image.source} width="100" alt="" />
-            </div>
+              <div
+                style={{
+                  position: "absolute",
+                  top: 0,
+                  cursor: "grab",
+                }}
+              >
+                <img src={image.source} width="100%" alt="" />
+              </div>
+            </ResizableBox>
           </Draggable>
         );
       }
@@ -57,8 +65,8 @@ export class Preview extends Component {
 
         <img
           id="preview-image"
-          width={data.width ? data.width+'px' : "500px"}
-          height={data.height ? data.height+'px' : "500px"}
+          width={data.width ? data.width + "px" : "500px"}
+          height={data.height ? data.height + "px" : "500px"}
           src={data.image}
           alt="Random"
         />
