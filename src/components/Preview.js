@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Draggable from "react-draggable";
-import {  ResizableBox } from "react-resizable";
+import { ResizableBox } from "react-resizable";
+import sample from "../assets/images/sample.jpeg";
 export class Preview extends Component {
   render() {
     const { data } = this.props;
@@ -30,34 +31,31 @@ export class Preview extends Component {
         </Draggable>
       );
     });
+    let illToBeRendered = [];
 
-    let illToBeRendered = data.imageIll.map((image) => {
-      let illustration = [];
-      for (let i = 0; i < image.count; i++) {
-        illustration.push(
-          <Draggable bounds="parent" handle="img">
-            <ResizableBox
-              className="box"
-              width={100}
-              height={100}
-              minConstraints={[50, 50]}
-              style={{ position: "absolute", top: 0 }}
+    for (let image = 0; image < data.imageIll.length; image++) {
+      illToBeRendered.push(
+        <Draggable bounds="parent" handle="img">
+          <ResizableBox
+            className="box"
+            width={100}
+            height={100}
+            minConstraints={[50, 50]}
+            style={{ position: "absolute", top: 0 }}
+          >
+            <div
+              style={{
+                position: "absolute",
+                top: 0,
+                cursor: "grab",
+              }}
             >
-              <div
-                style={{
-                  position: "absolute",
-                  top: 0,
-                  cursor: "grab",
-                }}
-              >
-                <img src={image.source} width="100%" alt="" />
-              </div>
-            </ResizableBox>
-          </Draggable>
-        );
-      }
-      return illustration;
-    });
+              <img src={data.imageIll[image]} width="100%" alt="" />
+            </div>
+          </ResizableBox>
+        </Draggable>
+      );
+    }
     return (
       <div className="preview">
         {detailsToBeRendered}
@@ -67,7 +65,7 @@ export class Preview extends Component {
           id="preview-image"
           width={data.width ? data.width + "px" : "500px"}
           height={data.height ? data.height + "px" : "500px"}
-          src={data.image}
+          src={sample}
           alt="Random"
         />
       </div>

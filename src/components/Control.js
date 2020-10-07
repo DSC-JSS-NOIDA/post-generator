@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Preview } from "./Preview";
-import sample from "../assets/images/sample.jpg";
+import sample from "../assets/images/sample.jpeg";
 import ExportAsImg from "./ExportAsImg";
 import i1 from "../assets/images/illustration/1.png";
 import i2 from "../assets/images/illustration/2.png";
@@ -16,8 +16,7 @@ export class Control extends Component {
     this.componentRef = React.createRef();
 
     this.state = {
-      image: sample,
-      width: "100%",
+      width: "500px",
       height: "500px",
       downloadAs: "PNG",
       fieldValues: [
@@ -62,7 +61,7 @@ export class Control extends Component {
       colorVal: [],
       fontSize: [],
       isBold: [],
-      imageIll:[],
+      imageIll: [],
       toBeDownloaded: <Preview data={this.state} />,
     };
   }
@@ -142,21 +141,20 @@ export class Control extends Component {
     }
   };
   addIllust = (e) => {
-    let imgObj= {
-      count:parseInt(e.target.name)+1,
-      source:e.target.src
-    }
-    e.target.name = imgObj.count;
-    let newArr= this.state.imageIll;
-    newArr[parseInt(e.target.id)] = imgObj;
-    this.setState({imageIll:newArr})
+    // count:parseInt(e.target.name)+1,
+    let imgObj = e.target.src;
+
+    // e.target.name = imgObj.count;
+    let newArr = this.state.imageIll;
+    newArr.push(imgObj);
+    this.setState({ imageIll: newArr });
     console.log(this.state);
-  }
-  removeAll = () =>{
+  };
+  removeAll = () => {
     this.setState({
-      imageIll:[]
-    })
-  }
+      imageIll: [],
+    });
+  };
   addMoreFields = () => {
     let newKey = parseInt(this.state.keyNum) + 1;
     let newObj = {
@@ -204,6 +202,7 @@ export class Control extends Component {
     });
   };
   render() {
+    let removeIllustrationName;
     let illArray = [i1, i2, i3, i4, i5, i6, i7];
     return (
       <div className="main-content">
