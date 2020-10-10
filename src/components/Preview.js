@@ -14,7 +14,7 @@ export class Preview extends Component {
       }
 
       return (
-        <Draggable bounds="parent" handle="img">
+        <Draggable bounds="parent" handle="p">
           <ResizableBox
             className="box"
             width={100}
