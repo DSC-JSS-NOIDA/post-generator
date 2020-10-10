@@ -1,5 +1,6 @@
 body {
   background-color: #e4e4e4f1 !important;
+  
 }
 
 /* Font face rule */
@@ -33,7 +34,9 @@ body {
 }
 .main-content {
   margin-top: 130px;
+  width: 100%;
   display: flex;
+  overflow-x: visible;
   justify-content: space-around;
 }
 .preview {
@@ -197,8 +200,8 @@ footer {
 }
 .react-resizable-handle {
   position: absolute;
-  width: 10px;
-  height: 10px;
+  width: 12px;
+  height: 12px;
   background-repeat: no-repeat;
   background-origin: content-box;
   box-sizing: border-box;

@@ -14,20 +14,28 @@ export class Preview extends Component {
       }
 
       return (
-        <Draggable bounds="parent" key={ind}>
-          <div
-            style={{
-              position: "absolute",
-              top: 0,
-              cursor: "grab",
-              fontFamily: "Google Sans",
-              color: data.colorVal[ind],
-              fontSize: `${data.fontSize[ind]}px`,
-              fontWeight: fW,
-            }}
+        <Draggable bounds="parent" handle="img">
+          <ResizableBox
+            className="box"
+            width={100}
+            height={100}
+            minConstraints={[50, 50]}
+            style={{ position: "absolute", top: 0 }}
           >
-            {detail}
-          </div>
+            <div
+              style={{
+                position: "absolute",
+                top: 0,
+                cursor: "grab",
+                fontFamily: "Google Sans",
+                color: data.colorVal[ind],
+                fontSize: `${data.fontSize[ind]}px`,
+                fontWeight: fW,
+              }}
+            >
+              <p style={{ wordBreak: "break-word" }}>{detail}</p>
+            </div>
+          </ResizableBox>
         </Draggable>
       );
     });
@@ -35,52 +43,62 @@ export class Preview extends Component {
     let imgToBeRendered = [];
 
     for (let image = 0; image < data.imageIll.length; image++) {
-      if(data.imageIll[image])
-      illToBeRendered.push(
-        <Draggable bounds="parent" handle="img">
-          <ResizableBox
-            className="box"
-            width={100}
-            height={100}
-            minConstraints={[50, 50]}
-            style={{ position: "absolute", top: 0 }}
-          >
-            <div
-              style={{
-                position: "absolute",
-                top: 0,
-                cursor: "grab",
-              }}
+      if (data.imageIll[image])
+        illToBeRendered.push(
+          <Draggable bounds="parent" handle="img">
+            <ResizableBox
+              className="box"
+              width={100}
+              height={100}
+              minConstraints={[50, 50]}
+              style={{ position: "absolute", top: 0 }}
             >
-              <img src={data.imageIll[image]} width="100%" alt="" />
-            </div>
-          </ResizableBox>
-        </Draggable>
-      );
+              <div
+                style={{
+                  position: "absolute",
+                  top: 0,
+                  cursor: "grab",
+                }}
+              >
+                <img
+                  src={data.imageIll[image]}
+                  style={{ zIndex: "100" }}
+                  width="100%"
+                  alt=""
+                />
+              </div>
+            </ResizableBox>
+          </Draggable>
+        );
     }
     for (let image = 0; image < data.upldImg.length; image++) {
-      if(data.upldImg[image])
-      imgToBeRendered.push(
-        <Draggable bounds="parent" handle="img">
-          <ResizableBox
-            className="box"
-            width={100}
-            height={100}
-            minConstraints={[50, 50]}
-            style={{ position: "absolute", top: 0 }}
-          >
-            <div
-              style={{
-                position: "absolute",
-                top: 0,
-                cursor: "grab",
-              }}
+      if (data.upldImg[image])
+        imgToBeRendered.push(
+          <Draggable bounds="parent" handle="img">
+            <ResizableBox
+              className="box"
+              width={100}
+              height={100}
+              minConstraints={[50, 50]}
+              style={{ position: "absolute", top: 0 }}
             >
-              <img src={data.upldImg[image]} width="100%" alt="" />
-            </div>
-          </ResizableBox>
-        </Draggable>
-      );
+              <div
+                style={{
+                  position: "absolute",
+                  top: 0,
+                  cursor: "grab",
+                }}
+              >
+                <img
+                  src={data.upldImg[image]}
+                  style={{ zIndex: "100" }}
+                  width="100%"
+                  alt=""
+                />
+              </div>
+            </ResizableBox>
+          </Draggable>
+        );
     }
 
     return (
