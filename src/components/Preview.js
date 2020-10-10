@@ -35,6 +35,7 @@ export class Preview extends Component {
     let imgToBeRendered = [];
 
     for (let image = 0; image < data.imageIll.length; image++) {
+      if(data.imageIll[image])
       illToBeRendered.push(
         <Draggable bounds="parent" handle="img">
           <ResizableBox
@@ -58,6 +59,7 @@ export class Preview extends Component {
       );
     }
     for (let image = 0; image < data.upldImg.length; image++) {
+      if(data.upldImg[image])
       imgToBeRendered.push(
         <Draggable bounds="parent" handle="img">
           <ResizableBox

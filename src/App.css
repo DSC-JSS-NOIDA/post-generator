@@ -59,7 +59,7 @@ input[type="text"] {
   padding: 5px;
 }
 input[type="button"] {
-  background-color: #17a2b8;
+  background-color: #0275d8;
   color: white;
   outline: none;
   margin-bottom: 10px;
@@ -67,8 +67,20 @@ input[type="button"] {
   padding: 8px;
   border-radius: 5px;
   margin-top: 15px;
+  transition: all 0.3s ease;
 }
-.field_vals{
+input[type="color"] {
+  border-radius: 5px;
+  padding: 2px;
+  width: 70px;
+  height: 30px;
+  cursor: pointer;
+}
+input[type="button"]:hover {
+  background: black;
+  transition: all 0.3s ease;
+}
+.field_vals {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -84,7 +96,7 @@ input[type="button"] {
   border-radius: 4px;
   cursor: pointer;
 }
-.file_up{
+.file_up {
   margin-top: 40px;
   width: 100%;
   display: flex;
@@ -92,17 +104,25 @@ input[type="button"] {
   justify-content: center;
   align-items: center;
 }
-.file_sec{
+.file_sec {
   width: 100%;
   display: flex;
   padding: 15px;
   justify-content: space-around;
   align-items: center;
-  /* border: 1px solid red; */
 }
-.close{
+.close {
   cursor: pointer;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  padding: 10px;
+  border-radius: 3px;
+  transition: all 0.3s ease;
 }
+.close:hover{
+  color: white !important;
+  background: black;
+}
+
 .download {
   margin-top: 15px;
   display: flex;
@@ -140,15 +160,24 @@ footer {
 .github-footer {
   display: none;
 }
-@media (max-width: 568px) {
+@media (max-width: 1200px) {
   .main-content {
     flex-direction: column;
     justify-content: center;
     align-items: center;
   }
+  .preview {
+    width: 100%;
+  }
   .control-panel {
     width: 80%;
   }
+
+  #preview-image {
+    width: 100%;
+    height: 100%;
+  }
+
 }
 @media (max-width: 500px) {
   .github-icon {
@@ -157,6 +186,9 @@ footer {
   .github-footer {
     display: block;
     background-color: inherit;
+  }
+  footer{
+    font-size: 5vw;
   }
 }
 
@@ -172,6 +204,7 @@ footer {
   background-repeat: no-repeat;
   background-origin: content-box;
   box-sizing: border-box;
+  color: white;
   background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2IDYiIHN0eWxlPSJiYWNrZ3JvdW5kLWNvbG9yOiNmZmZmZmYwMCIgeD0iMHB4IiB5PSIwcHgiIHdpZHRoPSI2cHgiIGhlaWdodD0iNnB4Ij48ZyBvcGFjaXR5PSIwLjMwMiI+PHBhdGggZD0iTSA2IDYgTCAwIDYgTCAwIDQuMiBMIDQgNC4yIEwgNC4yIDQuMiBMIDQuMiAwIEwgNiAwIEwgNiA2IEwgNiA2IFoiIGZpbGw9IiMwMDAwMDAiLz48L2c+PC9zdmc+");
   background-position: bottom right;
   padding: 0 3px 3px 0;
@@ -182,13 +215,4 @@ footer {
   right: 0;
   cursor: se-resize;
 }
-/* .react-resizable-remove {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  background-repeat: no-repeat;
-  background-origin: content-box;
-  box-sizing: border-box;
-  background-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjwhRE9DVFlQRSBzdmcgIFBVQkxJQyAnLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4nICAnaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkJz48c3ZnIGhlaWdodD0iNTEycHgiIGlkPSJMYXllcl8xIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA1MTIgNTEyOyIgdmVyc2lvbj0iMS4xIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiIgd2lkdGg9IjUxMnB4IiB4bWw6c3BhY2U9InByZXNlcnZlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj48cGF0aCBkPSJNNDQzLjYsMzg3LjFMMzEyLjQsMjU1LjRsMTMxLjUtMTMwYzUuNC01LjQsNS40LTE0LjIsMC0xOS42bC0zNy40LTM3LjZjLTIuNi0yLjYtNi4xLTQtOS44LTRjLTMuNywwLTcuMiwxLjUtOS44LDQgIEwyNTYsMTk3LjhMMTI0LjksNjguM2MtMi42LTIuNi02LjEtNC05LjgtNGMtMy43LDAtNy4yLDEuNS05LjgsNEw2OCwxMDUuOWMtNS40LDUuNC01LjQsMTQuMiwwLDE5LjZsMTMxLjUsMTMwTDY4LjQsMzg3LjEgIGMtMi42LDIuNi00LjEsNi4xLTQuMSw5LjhjMCwzLjcsMS40LDcuMiw0LjEsOS44bDM3LjQsMzcuNmMyLjcsMi43LDYuMiw0LjEsOS44LDQuMWMzLjUsMCw3LjEtMS4zLDkuOC00LjFMMjU2LDMxMy4xbDEzMC43LDEzMS4xICBjMi43LDIuNyw2LjIsNC4xLDkuOCw0LjFjMy41LDAsNy4xLTEuMyw5LjgtNC4xbDM3LjQtMzcuNmMyLjYtMi42LDQuMS02LjEsNC4xLTkuOEM0NDcuNywzOTMuMiw0NDYuMiwzODkuNyw0NDMuNiwzODcuMXoiLz48L3N2Zz4=");
-  padding: 0 3px 3px 0;
-} */
+

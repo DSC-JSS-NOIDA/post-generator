@@ -71,13 +71,11 @@ export class Control extends Component {
                 type="file"
                 onChange={(event) => this.handleChange(event)}
               />
-              <span
-                className="close"
+              <i
                 name={0}
                 onClick={(e) => this.handleDelete(e)}
-              >
-                &#x2573;
-              </span>
+                className="fa close fa-close fa-lg"
+              ></i>
             </div>
           ),
         },
@@ -176,30 +174,28 @@ export class Control extends Component {
   };
   addUpldFields = () => {
     let upldArr = this.state.upldField;
-    let upldKey = this.state.upldKey+1;
+    let upldKey = this.state.upldKey + 1;
     upldArr.push({
       keyNum: upldKey,
       renderEle: (
         <div className="file_sec" key={upldKey}>
           <input type="file" onChange={(event) => this.handleChange(event)} />
-          <span
-            className="close"
+          <i
             name={upldKey}
             onClick={(e) => this.handleDelete(e)}
-          >
-            &#x2573;
-          </span>
+            className="fa close fa-close fa-lg"
+          ></i>
         </div>
       ),
     });
-    this.setState({upldKey:upldKey, upldField: upldArr });
+    this.setState({ upldKey: upldKey, upldField: upldArr });
   };
   handleDelete = (e) => {
     let upldArr = this.state.upldField;
     let newUpldImg = this.state.upldImg;
-    newUpldImg[parseInt(e.target.getAttribute('name'))]=null;
-    upldArr[e.target.getAttribute('name')]=undefined;
-    this.setState({ upldField: upldArr,upldImg:newUpldImg });
+    newUpldImg[parseInt(e.target.getAttribute("name"))] = null;
+    upldArr[parseInt(e.target.getAttribute("name"))] = undefined;
+    this.setState({ upldField: upldArr, upldImg: newUpldImg });
     console.log(this.state.upldField);
   };
   addMoreFields = () => {
@@ -250,7 +246,9 @@ export class Control extends Component {
   };
   render() {
     let illArray = [i1, i2, i3, i4, i5, i6, i7];
-    let upldArr = this.state.upldField.filter((ele) => ele!==undefined).map((ele) => ele.renderEle);
+    let upldArr = this.state.upldField
+      .filter((ele) => ele !== undefined)
+      .map((ele) => ele.renderEle);
     console.log(upldArr);
     return (
       <div className="main-content">
