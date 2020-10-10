@@ -90,8 +90,8 @@ export class Preview extends Component {
         {imgToBeRendered}
         <img
           id="preview-image"
-          width={data.width ? data.width + "px" : "320px"}
-          height={data.height ? data.height + "px" : "320px"}
+          width={data.width ? data.width + "px" : "800px"}
+          height={data.height ? data.height + "px" : "800px"}
           src={sample}
           alt="Random"
         />
