@@ -1,5 +1,6 @@
 import React from "react";
 import { Navbar } from "reactstrap";
+import logo from '../assets/images/logo.jpeg'
 
 export default function Header() {
   return (
@@ -7,7 +8,7 @@ export default function Header() {
       <div className="container-fluid">
         <div className="d-flex align-items-center">
           &nbsp;&nbsp;&nbsp;
-          <h3 className="text-white">Post Generator</h3>
+          <img src={logo} alt="" width="200"/>
         </div>
 
         <a

@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Preview } from "./Preview";
-import sample from "../assets/images/sample.jpeg";
 import ExportAsImg from "./ExportAsImg";
 import i1 from "../assets/images/illustration/1.png";
 import i2 from "../assets/images/illustration/2.png";
@@ -16,8 +15,8 @@ export class Control extends Component {
     this.componentRef = React.createRef();
 
     this.state = {
-      width: "500px",
-      height: "500px",
+      width: "800px",
+      height: "800px",
       downloadAs: "PNG",
       fieldValues: [
         {
@@ -62,12 +61,36 @@ export class Control extends Component {
       fontSize: [],
       isBold: [],
       imageIll: [],
+      upldImg: [],
+      upldField: [
+        {
+          keyNum: 0,
+          renderEle: (
+            <div className="file_sec" key={0}>
+              <input
+                type="file"
+                onChange={(event) => this.handleChange(event)}
+              />
+              <span
+                className="close"
+                name={0}
+                onClick={(e) => this.handleDelete(e)}
+              >
+                &#x2573;
+              </span>
+            </div>
+          ),
+        },
+      ],
+      upldKey: 0,
       toBeDownloaded: <Preview data={this.state} />,
     };
   }
   handleChange = (event) => {
+    let upldArr = this.state.upldImg;
+    upldArr.push(URL.createObjectURL(event.target.files[0]));
     this.setState({
-      image: URL.createObjectURL(event.target.files[0]),
+      upldImg: upldArr,
     });
   };
   changeWidth = (e) => {
@@ -141,19 +164,43 @@ export class Control extends Component {
     }
   };
   addIllust = (e) => {
-    // count:parseInt(e.target.name)+1,
     let imgObj = e.target.src;
-
-    // e.target.name = imgObj.count;
     let newArr = this.state.imageIll;
     newArr.push(imgObj);
     this.setState({ imageIll: newArr });
-    console.log(this.state);
   };
   removeAll = () => {
     this.setState({
       imageIll: [],
     });
+  };
+  addUpldFields = () => {
+    let upldArr = this.state.upldField;
+    let upldKey = this.state.upldKey+1;
+    upldArr.push({
+      keyNum: upldKey,
+      renderEle: (
+        <div className="file_sec" key={upldKey}>
+          <input type="file" onChange={(event) => this.handleChange(event)} />
+          <span
+            className="close"
+            name={upldKey}
+            onClick={(e) => this.handleDelete(e)}
+          >
+            &#x2573;
+          </span>
+        </div>
+      ),
+    });
+    this.setState({upldKey:upldKey, upldField: upldArr });
+  };
+  handleDelete = (e) => {
+    let upldArr = this.state.upldField;
+    let newUpldImg = this.state.upldImg;
+    newUpldImg[parseInt(e.target.getAttribute('name'))]=null;
+    upldArr[e.target.getAttribute('name')]=undefined;
+    this.setState({ upldField: upldArr,upldImg:newUpldImg });
+    console.log(this.state.upldField);
   };
   addMoreFields = () => {
     let newKey = parseInt(this.state.keyNum) + 1;
@@ -202,14 +249,14 @@ export class Control extends Component {
     });
   };
   render() {
-    let removeIllustrationName;
     let illArray = [i1, i2, i3, i4, i5, i6, i7];
+    let upldArr = this.state.upldField.filter((ele) => ele!==undefined).map((ele) => ele.renderEle);
+    console.log(upldArr);
     return (
       <div className="main-content">
         <div className="control-panel">
-          <h2>Post Generator</h2>
+          <h2>Snappify</h2>
           <p>Tool that gives your social media ready post.</p>
-          <input type="file" onChange={(event) => this.handleChange(event)} />
           <input
             type="number"
             placeholder="Enter Width"
@@ -220,14 +267,14 @@ export class Control extends Component {
             placeholder="Enter Height"
             onChange={(e) => this.changeHeight(e)}
           />
-          {this.state.fieldValues.map((element) => {
+          {this.state.fieldValues.map((element, ind) => {
             return (
-              <>
+              <div key={ind} className="field_vals">
                 {element.detail}
                 {element.font}
                 {element.bold}
                 {element.color}
-              </>
+              </div>
             );
           })}
           <input
@@ -252,6 +299,12 @@ export class Control extends Component {
             type="button"
             value="Remove Illustrations"
             onClick={() => this.removeAll()}
+          />
+          <div className="file_up">{upldArr}</div>
+          <input
+            type="button"
+            value="Add More Images"
+            onClick={() => this.addUpldFields()}
           />
           <div className="download">
             <h5>Download as: </h5>

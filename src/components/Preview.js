@@ -32,6 +32,7 @@ export class Preview extends Component {
       );
     });
     let illToBeRendered = [];
+    let imgToBeRendered = [];
 
     for (let image = 0; image < data.imageIll.length; image++) {
       illToBeRendered.push(
@@ -56,15 +57,39 @@ export class Preview extends Component {
         </Draggable>
       );
     }
+    for (let image = 0; image < data.upldImg.length; image++) {
+      imgToBeRendered.push(
+        <Draggable bounds="parent" handle="img">
+          <ResizableBox
+            className="box"
+            width={100}
+            height={100}
+            minConstraints={[50, 50]}
+            style={{ position: "absolute", top: 0 }}
+          >
+            <div
+              style={{
+                position: "absolute",
+                top: 0,
+                cursor: "grab",
+              }}
+            >
+              <img src={data.upldImg[image]} width="100%" alt="" />
+            </div>
+          </ResizableBox>
+        </Draggable>
+      );
+    }
+
     return (
       <div className="preview">
         {detailsToBeRendered}
         {illToBeRendered}
-
+        {imgToBeRendered}
         <img
           id="preview-image"
-          width={data.width ? data.width + "px" : "500px"}
-          height={data.height ? data.height + "px" : "500px"}
+          width={data.width ? data.width + "px" : "320px"}
+          height={data.height ? data.height + "px" : "320px"}
           src={sample}
           alt="Random"
         />
