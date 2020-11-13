@@ -11,7 +11,18 @@ export class ExportAsImg extends Component {
 
     this.state = {};
   }
-
+  removeHandlers(){
+    let handlerColl = document.getElementsByClassName('react-resizable-handle-se');
+    for(let i=0;i<handlerColl.length;i++){
+      handlerColl[i].style.width="0%";
+    }
+  }
+  showHandlers(){
+    let handlerColl = document.getElementsByClassName('react-resizable-handle-se');
+    for(let i=0;i<handlerColl.length;i++){
+      handlerColl[i].style.width="100%";
+  }
+}
   render() {
     const { options } = this.props;
 
@@ -19,10 +30,11 @@ export class ExportAsImg extends Component {
       <input
         type="button"
         onClick={() => {
-          
+          this.removeHandlers();
           options.downloadAs === "PNG"
             ? exportComponentAsPNG(this.props.compref)
             : exportComponentAsJPEG(this.props.compref);
+            this.showHandlers();
         }}
         value="Download"
       />
