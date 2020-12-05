@@ -1,5 +1,5 @@
 
-# Snapiffy
+# Snappify
 Snappify is a smart post generator that helps you create posts for all social media profiles including Instagram, Facebook, LinkedIn, and Twitter within a snap. Don’t waste time coming up with creative ideas or messing with apps. Customizing is really easy, all you have to do is type in your information, change colors, fonts, images, resize, and voilá!
 
 
